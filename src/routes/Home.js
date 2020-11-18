@@ -1,34 +1,28 @@
+import Sweet from "components/Sweet";
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 
-const Home = () => {
+const Home = ({ userObj }) => {
 
     const [sweet, setSweet] = useState("");
     const [sweets, setSweets] = useState([]);
-    const getSweets = async () => {
-        const dbSweets = await dbService.collection("sweets").get();
-        dbSweets.forEach((document) => {
-            const sweetObject = {
-                ...document.data(),
-                id: document.id,
-            }
-            setSweets(prev => [sweetObject, ...prev]);
-            // set이 붙는 함수를 쓸 때 값 대신 함수를 전달 할 수 있음.
-            // 만약 함수를 전달하면, 리액트는 이전 값에 접근할 수 있게 해줌
-            // implicit return (배열을 리턴). 배열에서 첫번째 요소는 가장 최근 document이고
-            // 그 뒤로 이전 document를 붙임
-        });
-    }
 
     useEffect(() => {
-        getSweets();
+        dbService.collection("sweets").onSnapshot((snapshot) => {
+            const sweetArray = snapshot.docs.map(doc => ({ 
+                id: doc.id, 
+                ...doc.data(), 
+            }));
+            setSweets(sweetArray);
+        });
     }, []);
 
     const onSubmit = async (evt) => {
         evt.preventDefault();
         await dbService.collection("sweets").add({
-            sweet,
-            createdAt: Date.now()
+            text: sweet,
+            createdAt: Date.now(),
+            creatorId: userObj.uid,
         });
         setSweet("");
     }
@@ -46,10 +40,8 @@ const Home = () => {
                 <input type="submit" value="Sweet" />
             </form>
             <div>
-                {sweets.map(sweet =>  
-                <div key={sweet.id}>
-                    <h4>{sweet.sweet}</h4>
-                </div> 
+                {sweets.map(sweet =>
+                    <Sweet key={sweet.id} sweetObj={sweet} isOwner={sweet.creatorId === userObj.uid} />
                 )}
             </div>
         </div>
