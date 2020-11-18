@@ -41,7 +41,9 @@ const Home = ({ userObj }) => {
             </form>
             <div>
                 {sweets.map(sweet =>
-                    <Sweet key={sweet.id} sweetObj={sweet} isOwner={sweet.creatorId === userObj.uid} />
+                    <Sweet key={sweet.id} 
+                    sweetObj={sweet} 
+                    isOwner={sweet.creatorId === userObj.uid} />
                 )}
             </div>
         </div>
