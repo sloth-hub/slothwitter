@@ -6,11 +6,13 @@ const Sweet = ({ sweetObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
     const [newSweet, setNewSweet] = useState(sweetObj.text);
 
-    const onDeleteClick = () => {
+    const onDeleteClick = async() => {
         const ok = window.confirm("Are you sure you want to delete this sweet?");
         if (ok) {
-            dbService.doc(`sweets/${sweetObj.id}`).delete();
-            storageService.refFromURL(sweetObj.fileUrl).delete();
+            await dbService.doc(`sweets/${sweetObj.id}`).delete();
+            if (sweetObj.fileUrl !== "") {
+                await storageService.refFromURL(sweetObj.fileUrl).delete();
+            }
         }
     }
 
