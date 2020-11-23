@@ -12,20 +12,24 @@ const SweetFactory = ({ userObj }) => {
     const onSubmit = async (evt) => {
         evt.preventDefault();
         let fileUrl = "";
-        if (file !== "") {
-            const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
-            const response = await fileRef.putString(file, "data_url");
-            fileUrl = await response.ref.getDownloadURL();
+        if (sweet !== "") {
+            if (file !== "") {
+                const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+                const response = await fileRef.putString(file, "data_url");
+                fileUrl = await response.ref.getDownloadURL();
+            }
+            const sweetObj = {
+                text: sweet,
+                createdAt: Date.now(),
+                creatorId: userObj.uid,
+                fileUrl
+            }
+            await dbService.collection("sweets").add(sweetObj);
+            setSweet("");
+            setFile("");
+        } else {
+            alert("내용을 입력해주세요.");
         }
-        const sweetObj = {
-            text: sweet,
-            createdAt: Date.now(),
-            creatorId: userObj.uid,
-            fileUrl
-        }
-        await dbService.collection("sweets").add(sweetObj);
-        setSweet("");
-        setFile("");
     }
     const onChange = (evt) => {
         const {

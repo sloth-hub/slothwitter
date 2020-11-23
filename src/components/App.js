@@ -13,6 +13,7 @@ const App = () => {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
+          photoUrl: user.photoURL,
           updateProfile: (args) => user.updateProfile(args)
         });
       } else {
