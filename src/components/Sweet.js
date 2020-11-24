@@ -32,6 +32,18 @@ const Sweet = ({ sweetObj, isOwner }) => {
         } = evt;
         setNewSweet(value);
     }
+    const Actions = () => {
+        return (
+            <div className="sweet__actions">
+                <span onClick={onDeleteClick}>
+                    <FontAwesomeIcon icon={faTrash} />
+                </span>
+                <span onClick={toggleEditing}>
+                    <FontAwesomeIcon icon={faPencilAlt} />
+                </span>
+            </div>
+        );
+    }
 
     return (
         <div className="sweet">
@@ -54,18 +66,20 @@ const Sweet = ({ sweetObj, isOwner }) => {
                 </>
             ) : (
                     <>
-                        <h4>{sweetObj.text}</h4>
-                        { sweetObj.fileUrl && <img src={sweetObj.fileUrl} />}
-                        { isOwner && (
-                            <div className="sweet__actions">
-                                <span onClick={onDeleteClick}>
-                                    <FontAwesomeIcon icon={faTrash} />
-                                </span>
-                                <span onClick={toggleEditing}>
-                                    <FontAwesomeIcon icon={faPencilAlt} />
-                                </span>
-                            </div>
-                        )}
+                        { sweetObj.fileUrl ? (
+                            <>
+                                <img src={sweetObj.fileUrl} />
+                                <div className="sweetContent">
+                                    <p style={{ borderRadius: "0 0 10px 10px" }}>{sweetObj.text}</p>
+                                    {isOwner && <Actions />}
+                                </div>
+                            </>
+                        ) : (
+                                <div className="sweetContent">
+                                    <p>{sweetObj.text}</p>
+                                    { isOwner && <Actions />}
+                                </div>
+                            )}
                     </>
                 )}
         </div>
