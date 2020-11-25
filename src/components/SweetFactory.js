@@ -60,11 +60,12 @@ const SweetFactory = ({ userObj }) => {
     return (
         <form onSubmit={onSubmit} className="factoryForm">
             <div className="factoryInput__container">
-                <input type="text"
+                <textarea
                     value={sweet}
                     onChange={onChange}
                     placeholder="What's on your mind?"
                     maxLength={120}
+                    spellCheck="false"
                     className="factoryInput__input" />
                 <input type="submit" value="&rarr;" className="factoryInput__arrow" />
             </div>

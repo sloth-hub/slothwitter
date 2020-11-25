@@ -1,32 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import homeIcon from "images/sloth_black.png";
 
 const Navigation = ({ userObj }) => {
+
+    const linkStyle = {
+        marginLeft: 10,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        fonStize: 12
+    }
 
     return (
         <nav>
             <ul className="nav">
                 <li className="navHome">
-                    <Link to="/">
-                        <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
+                    <Link to="/" style={linkStyle}>
+                        <img src={homeIcon} alt="home icon" />
+                        <span className="navTitle">Home</span>
                     </Link>
                 </li>
                 <li className="navProfile">
-                    <Link to="/profile"
-                        style={{
-                            marginLeft: 10,
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            fontSize: 12,
-                        }}>
-                        <img src={userObj.photoUrl} className="profileImg" alt="profileImage" />
-                        <span className="profileName">
-                            {userObj.displayName
-                                ? `${userObj.displayName}의 Profile`
-                                : "Profile"}
+                    <Link to="/profile" style={linkStyle}>
+                        <img src={userObj.photoUrl} alt="profileImage" />
+                        <span className="navTitle">
+                            Profile
                         </span>
                     </Link>
                 </li>

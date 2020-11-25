@@ -1,5 +1,19 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
 
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb{
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: background linear .2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 input {
   all: unset;
   appearance: none;
@@ -38,23 +52,7 @@ form {
   width: 100%;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb{
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  transition: .2 linear;
-}
-::-webkit-scrollbar-thumb:hover{
-  transition: .2 linear;
-}
-::-webkit-scrollbar-thumb:active {
-  transition: .2 linear;
-}
+
 
 .sweet-input::placeholder {
   color: white;
@@ -112,11 +110,20 @@ footer {
     margin-right: 10px;
 }
 
-.profileName {
+.navHome img {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.navTitle {
     margin-top: 10px;
 }
 
-.profileImg {
+.navProfile img {
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -143,6 +150,7 @@ footer {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .factoryInput__container {
@@ -153,37 +161,64 @@ footer {
   position: relative;
   margin-bottom: 20px;
   width: 100%;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.factoryInput__container ::-webkit-scrollbar {
+  width: 5px;
+}
+.factoryInput__container ::-webkit-scrollbar-thumb {
+  background: transparent;
 }
 
 .factoryInput__input {
-  flex-grow: 1;
-  height: 40px;
-  padding: 0px 50px 0 20px;
+  resize: none;
+  width: 275px;
+  height: 30px;
+  border: none;
+  padding: 8px 20px;
   color: white;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 20px;
   font-weight: 500;
   font-size: 12px;
-  transition: background linear 0.2s, color linear 0.2s;
+  background-color: transparent;
 }
 
 .factoryInput__input::placeholder {
   color: white;
+  transition: color linear .2s;
 }
 
 .factoryInput__input:focus {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.5);
+  height: 84px;
+  outline: none;
+}
+
+.factoryInput__input:focus::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.factoryInput__container:focus-within {
+  height: 100px;
   backdrop-filter: saturate(200%) blur(5px);
   background-color: rgba(255, 255, 255, 0.6);
+  transition: all linear .2s;
 }
-.factoryInput__input:focus::placeholder {
-  color: rgba(0, 0, 0, 0.8);
+
+.factoryInput__input:focus + .factoryInput__arrow {
+  height: 98px;
+  top: 0;
+  border-radius: 0 18px 18px 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: height linear .2s;
 }
 
 .factoryInput__arrow {
   position: absolute;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
   height: 40px;
   width: 40px;
   padding: 10px 0px;
@@ -191,10 +226,12 @@ footer {
   border-radius: 20px;
   color: white;
   box-sizing: border-box;
+  transition: border-radius linear .2s, background linear .2s;
 }
 
 .factoryInput__label {
-  color: #04aaff;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -216,7 +253,7 @@ footer {
 }
 
 .factoryForm__clear {
-  color: #04aaff;
+  color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
   text-align: center;
 }
@@ -254,6 +291,7 @@ footer {
   background-color: rgba(255, 255, 255, 0.6);
   padding: 35px 20px 30px;
   border-radius: 10px;
+  white-space: break-spaces;
 }
 
 .sweet img {
