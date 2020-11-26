@@ -25,7 +25,9 @@ const Navigation = ({ userObj }) => {
                     <Link to="/profile" style={linkStyle}>
                         <img src={userObj.photoUrl} alt="profileImage" />
                         <span className="navTitle">
-                            Profile
+                            {userObj.displayName
+                                ? `${userObj.displayName}`
+                                : "Profile"}
                         </span>
                     </Link>
                 </li>

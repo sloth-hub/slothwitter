@@ -90,7 +90,6 @@ footer {
   color: white;
   border-radius: 20px;
   background-color: #04aaff;
-  cursor: pointer;
 }
 
 .cancelBtn {
@@ -131,6 +130,26 @@ footer {
 
 /* Profile Page */
 
+.profileBtn__container {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.profileBtn {
+  cursor: pointer;
+  padding: 7px 20px;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profileBtn + a {
+  margin-left: 10px;
+}
+
+/* Edit Profile */
+
 .profileForm {
   border-bottom: 1px solid rgba(255, 255, 255, 0.9);
   padding-bottom: 30px;
@@ -139,8 +158,8 @@ footer {
   flex-direction: column;
 }
 
-.logOut {
-  margin-top: 50px;
+.profileForm .formBtn + a {
+  margin-top: 10px;
 }
 
 /* Switter Factory */
