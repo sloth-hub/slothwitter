@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/slothwitter/static/css/main.f7f11fc5.chunk.css",
-    "main.js": "/slothwitter/static/js/main.3519ff19.chunk.js",
-    "main.js.map": "/slothwitter/static/js/main.3519ff19.chunk.js.map",
+    "main.css": "/slothwitter/static/css/main.51df0f7c.chunk.css",
+    "main.js": "/slothwitter/static/js/main.231af766.chunk.js",
+    "main.js.map": "/slothwitter/static/js/main.231af766.chunk.js.map",
     "runtime-main.js": "/slothwitter/static/js/runtime-main.b1d6e713.js",
     "runtime-main.js.map": "/slothwitter/static/js/runtime-main.b1d6e713.js.map",
-    "static/js/2.a24ccb20.chunk.js": "/slothwitter/static/js/2.a24ccb20.chunk.js",
-    "static/js/2.a24ccb20.chunk.js.map": "/slothwitter/static/js/2.a24ccb20.chunk.js.map",
+    "static/js/2.9531d05d.chunk.js": "/slothwitter/static/js/2.9531d05d.chunk.js",
+    "static/js/2.9531d05d.chunk.js.map": "/slothwitter/static/js/2.9531d05d.chunk.js.map",
     "index.html": "/slothwitter/index.html",
-    "static/css/main.f7f11fc5.chunk.css.map": "/slothwitter/static/css/main.f7f11fc5.chunk.css.map",
-    "static/js/2.a24ccb20.chunk.js.LICENSE.txt": "/slothwitter/static/js/2.a24ccb20.chunk.js.LICENSE.txt"
+    "static/css/main.51df0f7c.chunk.css.map": "/slothwitter/static/css/main.51df0f7c.chunk.css.map",
+    "static/js/2.9531d05d.chunk.js.LICENSE.txt": "/slothwitter/static/js/2.9531d05d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b1d6e713.js",
-    "static/js/2.a24ccb20.chunk.js",
-    "static/css/main.f7f11fc5.chunk.css",
-    "static/js/main.3519ff19.chunk.js"
+    "static/js/2.9531d05d.chunk.js",
+    "static/css/main.51df0f7c.chunk.css",
+    "static/js/main.231af766.chunk.js"
   ]
 }
