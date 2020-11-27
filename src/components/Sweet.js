@@ -34,13 +34,16 @@ const Sweet = ({ sweetObj, isOwner }) => {
     }
     const Actions = () => {
         return (
-            <div className="sweet__actions">
-                <span onClick={onDeleteClick}>
-                    <FontAwesomeIcon icon={faTrash} />
-                </span>
-                <span onClick={toggleEditing}>
-                    <FontAwesomeIcon icon={faPencilAlt} />
-                </span>
+            <div className="sweet__topcontainer">
+                <span className="nickname">{sweetObj.creatorName}</span>
+                <div className="sweet__actions">
+                    <span onClick={onDeleteClick}>
+                        <FontAwesomeIcon icon={faTrash} />
+                    </span>
+                    <span onClick={toggleEditing}>
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                    </span>
+                </div>
             </div>
         );
     }
@@ -69,15 +72,15 @@ const Sweet = ({ sweetObj, isOwner }) => {
                         { sweetObj.fileUrl ? (
                             <>
                                 <img src={sweetObj.fileUrl} />
-                                <div className="sweetContent">
-                                    <p style={{ borderRadius: "0 0 10px 10px" }}>{sweetObj.text}</p>
+                                <div className="sweetContent" style={{ borderRadius: "0 0 10px 10px" }}>
                                     {isOwner && <Actions />}
+                                    <p>{sweetObj.text}</p>
                                 </div>
                             </>
                         ) : (
                                 <div className="sweetContent">
-                                    <p>{sweetObj.text}</p>
                                     { isOwner && <Actions />}
+                                    <p>{sweetObj.text}</p>
                                 </div>
                             )}
                     </>

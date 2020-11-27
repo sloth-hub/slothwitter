@@ -52,8 +52,6 @@ form {
   width: 100%;
 }
 
-
-
 .sweet-input::placeholder {
   color: white;
   opacity: 0.9;
@@ -76,9 +74,10 @@ footer {
   width: 100%;
   padding: 10px 20px;
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.6);
   text-align: center;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: saturate(200%) blur(5px);
   color: black;
 }
 
@@ -89,12 +88,22 @@ footer {
   text-align: center;
   color: white;
   border-radius: 20px;
-  background-color: #04aaff;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: saturate(200%) blur(5px);
+  transition: background linear .2s;
+}
+
+.formBtn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .cancelBtn {
   cursor: pointer;
-  background-color: tomato;
+  background-color: rgb(255, 99, 71, 0.6);
+}
+
+.cancelBtn:hover {
+  background-color: rgb(255, 99, 71, 0.8);
 }
 
 /* Navigation */
@@ -130,21 +139,35 @@ footer {
 
 /* Profile Page */
 
-.profileBtn__container {
-  margin-bottom: 50px;
-  text-align: center;
+.profile__header {
+text-align: center;
+margin-bottom: 30px;
+background-color: rgba(255, 255, 255, 0.6);
+backdrop-filter: saturate(200%) blur(5px);
+border-radius: 10px;
+padding: 20px 0;
 }
 
-.profileBtn {
-  cursor: pointer;
-  padding: 7px 20px;
-  text-align: center;
-  color: white;
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+.profile__header img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
 
-.profileBtn + a {
+.profile__header .nickname {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+  margin: 10px 0 20px;
+}
+
+.profileBtn__container .formBtn {
+  display: inline-block;
+  width: auto;
+}
+
+.profileBtn__container .formBtn + a {
   margin-left: 10px;
 }
 
@@ -183,6 +206,7 @@ footer {
   height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 20px;
+  transition: all linear .2s;
 }
 
 .factoryInput__container ::-webkit-scrollbar {
@@ -202,6 +226,7 @@ footer {
   font-weight: 500;
   font-size: 12px;
   background-color: transparent;
+  transition: height linear .2s;
 }
 
 .factoryInput__input::placeholder {
@@ -223,15 +248,6 @@ footer {
   height: 100px;
   backdrop-filter: saturate(200%) blur(5px);
   background-color: rgba(255, 255, 255, 0.6);
-  transition: all linear .2s;
-}
-
-.factoryInput__input:focus + .factoryInput__arrow {
-  height: 98px;
-  top: 0;
-  border-radius: 0 18px 18px 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  transition: height linear .2s;
 }
 
 .factoryInput__arrow {
@@ -245,7 +261,14 @@ footer {
   border-radius: 20px;
   color: white;
   box-sizing: border-box;
-  transition: border-radius linear .2s, background linear .2s;
+  transition: border-radius linear .2s, background linear .2s, height linear .2s;
+}
+
+.factoryInput__input:focus + .factoryInput__arrow {
+  height: 98px;
+  top: 0;
+  border-radius: 0 18px 18px 0;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .factoryInput__label {
@@ -302,15 +325,16 @@ footer {
 
 .sweetContent {
   position: relative;
-}
-
-.sweet p {
   font-size: 14px;
   backdrop-filter: saturate(200%) blur(5px);
   background-color: rgba(255, 255, 255, 0.6);
-  padding: 35px 20px 30px;
+  padding: 50px 20px 30px;
   border-radius: 10px;
   white-space: break-spaces;
+}
+
+.sweet__topcontainer {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .sweet img {
@@ -319,7 +343,14 @@ footer {
   border-radius: 10px 10px 0 0;
 }
 
-.sweet__actions {
+.sweet .nickname {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-weight: 700;
+}
+
+.sweet__actions{
   position: absolute;
   right: 10px;
   top: 10px;

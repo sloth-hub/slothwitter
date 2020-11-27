@@ -9,8 +9,11 @@ const Profile = ({ userObj }) => {
     const history = useHistory();
 
     const onLogOutClick = () => {
-        authService.signOut();
-        history.push("/");
+        const ok = window.confirm("Are you sure you want to log out?");
+        if (ok) {
+            authService.signOut();
+            history.push("/");
+        }
     }
 
     const getMySweet = async () => {
@@ -31,14 +34,18 @@ const Profile = ({ userObj }) => {
 
     return (
         <div className="container">
-            <div className="profileBtn__container">
-                <span onClick={onLogOutClick}
-                    className="profileBtn">
-                    Log Out
+            <div className="profile__header">
+                <img src={userObj.photoUrl} alt="profile" />
+                <span className="nickname">{userObj.displayName}</span>
+                <div className="profileBtn__container">
+                    <span onClick={onLogOutClick}
+                        className="formBtn">
+                        Log Out
             </span>
-                <Link to="/editprofile">
-                    <span className="profileBtn">Edit Profile</span>
-                </Link>
+                    <Link to="/editprofile">
+                        <span className="formBtn">Edit Profile</span>
+                    </Link>
+                </div>
             </div>
             <div>
                 {sweets.map(sweet =>

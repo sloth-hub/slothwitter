@@ -22,6 +22,7 @@ const SweetFactory = ({ userObj }) => {
                 text: sweet,
                 createdAt: Date.now(),
                 creatorId: userObj.uid,
+                creatorName: userObj.displayName,
                 fileUrl
             }
             await dbService.collection("sweets").add(sweetObj);
