@@ -360,8 +360,12 @@ padding: 20px 0;
   cursor: pointer;
 }
 
-.sweet__actions span:first-child {
-  margin-right: 10px;
+.sweet__actions span + span {
+  margin-left: 10px;
+}
+
+.sweet__actions .date {
+  font-weight: 500;
 }
 
 /* Auth */

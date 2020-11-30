@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 const SweetFactory = ({ userObj }) => {
 
@@ -20,7 +21,7 @@ const SweetFactory = ({ userObj }) => {
             }
             const sweetObj = {
                 text: sweet,
-                createdAt: Date.now(),
+                createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
                 creatorId: userObj.uid,
                 creatorName: userObj.displayName,
                 fileUrl

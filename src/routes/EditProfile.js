@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const EditProfile = ({ userObj, refreshUser }) => {
 
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
+    const history = useHistory();
 
     const onChange = (evt) => {
         const {
@@ -16,6 +17,9 @@ const EditProfile = ({ userObj, refreshUser }) => {
         if(userObj.displayName !== newDisplayName) {
             await userObj.updateProfile({
                 displayName: newDisplayName
+            }).then(() => {
+                alert("변경이 완료되었습니다.");
+                history.push("/");
             });
             refreshUser();
         }

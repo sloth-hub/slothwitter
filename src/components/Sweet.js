@@ -2,6 +2,7 @@ import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 const Sweet = ({ sweetObj, isOwner }) => {
 
@@ -34,59 +35,64 @@ const Sweet = ({ sweetObj, isOwner }) => {
     }
     const Actions = () => {
         return (
-            <div className="sweet__topcontainer">
-                <span className="nickname">{sweetObj.creatorName}</span>
-                <div className="sweet__actions">
-                    <span onClick={onDeleteClick}>
-                        <FontAwesomeIcon icon={faTrash} />
-                    </span>
-                    <span onClick={toggleEditing}>
-                        <FontAwesomeIcon icon={faPencilAlt} />
-                    </span>
-                </div>
+            <div className="sweet__actions">
+                <span className="date">{moment(sweetObj.createdAt).format("YY.MM.DD")}</span>
+                <span onClick={onDeleteClick}>
+                    <FontAwesomeIcon icon={faTrash} />
+                </span>
+                <span onClick={toggleEditing}>
+                    <FontAwesomeIcon icon={faPencilAlt} />
+                </span>
             </div>
         );
     }
 
-    return (
-        <div className="sweet">
-            {editing ? ( // editing 모드 on이면
-                <>
-                    <form onSubmit={onSubmit} className="container sweetEdit">
-                        <input type="text"
-                            placeholder="Edit your sweet"
-                            value={newSweet}
-                            required
-                            onChange={onChange}
-                            className="formInput" />
-                        <input type="submit"
-                            value="update sweet"
-                            className="formBtn" />
-                    </form>
-                    <span onClick={toggleEditing} className="formBtn cancelBtn">
-                        cancel
+
+return (
+    <div className="sweet">
+        {editing ? ( // editing 모드 on이면
+            <>
+                <form onSubmit={onSubmit} className="container sweetEdit">
+                    <input type="text"
+                        placeholder="Edit your sweet"
+                        value={newSweet}
+                        required
+                        onChange={onChange}
+                        className="formInput" />
+                    <input type="submit"
+                        value="update sweet"
+                        className="formBtn" />
+                </form>
+                <span onClick={toggleEditing} className="formBtn cancelBtn">
+                    cancel
                     </span>
-                </>
-            ) : (
-                    <>
-                        { sweetObj.fileUrl ? (
-                            <>
-                                <img src={sweetObj.fileUrl} />
-                                <div className="sweetContent" style={{ borderRadius: "0 0 10px 10px" }}>
+            </>
+        ) : (
+                <>
+                    { sweetObj.fileUrl ? (
+                        <>
+                            <img src={sweetObj.fileUrl} alt="file" />
+                            <div className="sweetContent" style={{ borderRadius: "0 0 10px 10px" }}>
+                                <div className="sweet__topcontainer">
+                                    <span className="nickname">{sweetObj.creatorName}</span>
                                     {isOwner && <Actions />}
-                                    <p>{sweetObj.text}</p>
                                 </div>
-                            </>
-                        ) : (
-                                <div className="sweetContent">
-                                    { isOwner && <Actions />}
-                                    <p>{sweetObj.text}</p>
+                                <p>{sweetObj.text}</p>
+                            </div>
+                        </>
+                    ) : (
+                            <div className="sweetContent">
+                                <div className="sweet__topcontainer">
+                                    <span className="nickname">{sweetObj.creatorName}</span>
+                                    {isOwner && <Actions />}
                                 </div>
-                            )}
-                    </>
-                )}
-        </div>
-    );
+                                <p>{sweetObj.text}</p>
+                            </div>
+                        )}
+                </>
+            )}
+    </div>
+);
 }
 
 export default Sweet;
